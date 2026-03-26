@@ -101,34 +101,83 @@ if (clientAge >= 18 && clientAge < 65 && bestLapTime < 60) {
 // Step 3: Store the result in a new variable.
 // Step 4: Log the result.
 
+const stringArray: string[] = ["hello", "bye", "good morning"];
+const upperCaseArrayw: string[] = stringArray.map(str => str.toUpperCase());
+console.log(upperCaseArrayw);
 // Exercise 8: Filter Long Words (filter)
 // Step 1: Declare a variable and assign an array of words to it.
 // Step 2: Use the filter() method to keep only words longer than 5 characters.
 // Step 3: Store the result in a new variable.
 // Step 4: Log the result.
-
+const wordsArray: string[] = ["hello", "bye", "good morning", "hi", "welcome"];
+const longWordsArray: string[] = wordsArray.filter(word => word.length > 5);
+console.log(longWordsArray);
 // Exercise 9: Find Maximum Number (reduce)
 // Step 1: Declare a variable and assign an array of numbers to it.
 // Step 2: Use the reduce() method to find the largest number.
 // Step 3: Store the result in a variable.
 // Step 4: Log the result.
-
+const arrayOfnumbers: number[] = [3, 7, 2, 9, 5];
+const maxNumber: number = arrayOfnumbers.reduce((max, current) => {
+    if (max > current) {
+        return max;
+    }else {
+        return current;
+    }
+    
+});
+console.log(maxNumber);
 // Exercise 10: Calculate Total Price (map + reduce)
 // Step 1: Declare a type Item with name, price, and quantity.
 // Step 2: Create an array of items.
 // Step 3: Use map() to calculate price × quantity for each item.
 // Step 4: Use reduce() to sum all values.
 // Step 5: Log the total.
+type Item = {
+    name:string;
+    price: number;
+    quantity: number;
+}
+const itemsArrays : Item[] = [
+    { name : "Apple",price: 2, quantity: 3},
+    { name : "Banana",price: 1, quantity: 5},
+    { name : "Orange",price: 3, quantity: 2},
+]
+const itemtotalPrice:number[] = itemsArrays.map(item => item.price *item.quantity);
+const totalPrice:number = itemtotalPrice.reduce((sum ,current) => sum + current,0);
+console.log(totalPrice);
 
 // Exercise 11: Get Unique Values (reduce)
 // Step 1: Declare a variable and assign an array of numbers with duplicates.
 // Step 2: Use the reduce() method to return only unique values.
 // Step 3: Store the result in a new array.
 // Step 4: Log the result.
-
-// Exercise 12: Filter + Transform Users (filter + map – advanced)
+const numbersDulplicate:number[] = [1, 2, 3, 2, 4, 1, 5];
+const uniqueNumber:number[] = numbersDulplicate.reduce((unique:number[],current) => {
+    if (!unique.includes(current)) {
+        unique.push(current);
+    }
+    return unique;
+}, []);
+const uniqueNumber2:number[] = Array.from(new Set(numbersDulplicate));
+console.log(uniqueNumber);
+console.log(uniqueNumber2);
+// Execise 12: Filter + Transform Users (filter + map – advanced)
 // Step 1: Declare a type User with name and age.
 // Step 2: Create an array of users.
 // Step 3: Use filter() to keep only users over 18.
 // Step 4: Use map() to extract their names.
 // Step 5: Log the result.
+type User = {
+    name: string;
+    age: number;
+}
+const usersArray: User[] = [
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 17 },
+    { name: "Charlie", age: 30 },
+]
+const usersOver18: User[] = usersArray.filter(user => user.age > 18);
+const userOver18Names:string[] = usersOver18.map(user => user.name);
+console.log(usersOver18);
+console.log(userOver18Names);

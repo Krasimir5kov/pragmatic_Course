@@ -181,3 +181,4 @@ const usersOver18: User[] = usersArray.filter(user => user.age > 18);
 const userOver18Names:string[] = usersOver18.map(user => user.name);
 console.log(usersOver18);
 console.log(userOver18Names);
+///
